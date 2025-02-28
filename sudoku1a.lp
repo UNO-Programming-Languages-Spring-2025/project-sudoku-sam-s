@@ -7,26 +7,17 @@
 % Your implementation please...
 #const n = 4.
 
-% x(1..n).
-% y(1..n).
-% n(1..n).
-
-% {sudoku(X,Y,N): n(N)}=1 :- x(X) ,y(Y).
-
-x(1..n).
-y(1..n).
+row(1..n).
+col(1..n).
 n(1..n).
 
 
-
-cell(X,Y):- x(X),y(Y).
-sudoku(X,Y,N):- cell(X,Y),n(N).
-
-
+{sudoku(X,Y,N): n(N)}=1:-col(Y),row(X).
+:-sudoku(X,Y,N),sudoku(X',Y,N),X!=X'.
+:-sudoku(X,Y,N),sudoku(X,Y',N),Y!=Y'.
 
 
-
+:-sudoku(X,Y,N),sudoku(X,Y,N'),N!=N'.
 
 
 #show sudoku/3.
-
