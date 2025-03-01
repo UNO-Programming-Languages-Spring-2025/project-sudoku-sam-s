@@ -11,6 +11,9 @@ row(1..n).
 col(1..n).
 n(1..n).
 
+%somehow ties it to the test file to run successfully, not really sure 
+%of the necessity of this line otherwise.
+sudoku(X,Y,N):- initial(X,Y,N).
 
 {sudoku(X,Y,N): n(N)}=1:-col(Y),row(X).
 :-sudoku(X,Y,N),sudoku(X',Y,N),X!=X'.
