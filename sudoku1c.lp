@@ -24,6 +24,10 @@ subgrid(X,Y,G) :- row(X), col(Y), G = 1+( ((X-1)/sgs)*sgs + (Y-1)/sgs).
 :-sudoku(X,Y,N),sudoku(X',Y,N),X!=X'.
 :-sudoku(X,Y,N),sudoku(X,Y',N),Y!=Y'.
 
+%make sure there are unique numbers in subgrid
+:- sudoku(X,Y,N), sudoku(X',Y',N), subgrid(X,Y,G), subgrid(X',Y',G), 
+   (X,Y) != (X',Y').
+
 
 
 %this line is for readability still produces 576 answers
@@ -34,5 +38,5 @@ subgrid(X,Y,G) :- row(X), col(Y), G = 1+( ((X-1)/sgs)*sgs + (Y-1)/sgs).
 
 
 #show sudoku/3.
-#show subgrid/3.
+% #show subgrid/3.
 
