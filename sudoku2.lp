@@ -16,7 +16,13 @@ n(1..n).
 
 sudoku(X,Y,N):- initial(X,Y,N).
 
-subgrid(X,Y,G) :- row(X), col(Y), G = 1+( ((X-1)/sgs)*sgs + (Y-1)/sgs).
+%grid based indexing
+% GX Determines the subgrid row index.
+% GY Determines the subgrid column index.
+%G combines and adding 1 makes sure we don't start at 0
+subgrid(X,Y,G) :- row(X), col(Y), GX = (X - 1) / sgs, 
+                    GY = (Y - 1) / sgs, 
+                    G = 1 + (GX * sgs) + GY.
 
 {sudoku(X,Y,N): n(N)}=1:-col(Y),row(X).
 
